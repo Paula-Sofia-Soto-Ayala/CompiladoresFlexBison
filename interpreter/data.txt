@@ -1,0 +1,11 @@
+add apples = 10 description fruit category food;
+add laptop = 5 description electronics category tech;
+add milk = 20 description dairy category food;
+show;
+update apples = 15;
+remove milk;
+search category tech;
+search category fruit;
+save inventory.txt;
+load inventory.txt;
+show history;

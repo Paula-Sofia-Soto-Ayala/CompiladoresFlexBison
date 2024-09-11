@@ -1,0 +1,2 @@
+apples 15 fruit food
+laptop 5 electronics tech

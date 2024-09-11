@@ -1,0 +1,149 @@
+Gramática
+
+    0 $accept: program $end
+
+    1 program: program statement
+    2        | statement
+
+    3 statement: ADD IDENTIFIER ASSIGN NUMBER SEMICOLON
+    4          | REMOVE IDENTIFIER SEMICOLON
+    5          | SHOW SEMICOLON
+
+
+Terminales con las reglas donde aparecen
+
+$end (0) 0
+error (256)
+NUMBER (258) 3
+IDENTIFIER (259) 3 4
+ASSIGN (260) 3
+SEMICOLON (261) 3 4 5
+ADD (262) 3
+REMOVE (263) 4
+SHOW (264) 5
+
+
+No terminales con las reglas donde aparecen
+
+$accept (10)
+    en la izquierda: 0
+program (11)
+    en la izquierda: 1 2, en la derecha: 0 1
+statement (12)
+    en la izquierda: 3 4 5, en la derecha: 1 2
+
+
+estado 0
+
+    0 $accept: . program $end
+
+    ADD     desplazar e ir al estado 1
+    REMOVE  desplazar e ir al estado 2
+    SHOW    desplazar e ir al estado 3
+
+    program    ir al estado 4
+    statement  ir al estado 5
+
+
+estado 1
+
+    3 statement: ADD . IDENTIFIER ASSIGN NUMBER SEMICOLON
+
+    IDENTIFIER  desplazar e ir al estado 6
+
+
+estado 2
+
+    4 statement: REMOVE . IDENTIFIER SEMICOLON
+
+    IDENTIFIER  desplazar e ir al estado 7
+
+
+estado 3
+
+    5 statement: SHOW . SEMICOLON
+
+    SEMICOLON  desplazar e ir al estado 8
+
+
+estado 4
+
+    0 $accept: program . $end
+    1 program: program . statement
+
+    $end    desplazar e ir al estado 9
+    ADD     desplazar e ir al estado 1
+    REMOVE  desplazar e ir al estado 2
+    SHOW    desplazar e ir al estado 3
+
+    statement  ir al estado 10
+
+
+estado 5
+
+    2 program: statement .
+
+    $default  reduce usando la regla 2 (program)
+
+
+estado 6
+
+    3 statement: ADD IDENTIFIER . ASSIGN NUMBER SEMICOLON
+
+    ASSIGN  desplazar e ir al estado 11
+
+
+estado 7
+
+    4 statement: REMOVE IDENTIFIER . SEMICOLON
+
+    SEMICOLON  desplazar e ir al estado 12
+
+
+estado 8
+
+    5 statement: SHOW SEMICOLON .
+
+    $default  reduce usando la regla 5 (statement)
+
+
+estado 9
+
+    0 $accept: program $end .
+
+    $default  aceptar
+
+
+estado 10
+
+    1 program: program statement .
+
+    $default  reduce usando la regla 1 (program)
+
+
+estado 11
+
+    3 statement: ADD IDENTIFIER ASSIGN . NUMBER SEMICOLON
+
+    NUMBER  desplazar e ir al estado 13
+
+
+estado 12
+
+    4 statement: REMOVE IDENTIFIER SEMICOLON .
+
+    $default  reduce usando la regla 4 (statement)
+
+
+estado 13
+
+    3 statement: ADD IDENTIFIER ASSIGN NUMBER . SEMICOLON
+
+    SEMICOLON  desplazar e ir al estado 14
+
+
+estado 14
+
+    3 statement: ADD IDENTIFIER ASSIGN NUMBER SEMICOLON .
+
+    $default  reduce usando la regla 3 (statement)
