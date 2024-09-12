@@ -1,2 +1,4 @@
+ham 20 meat food
 apples 15 fruit food
 laptop 5 electronics tech
+milk 20 dairy food

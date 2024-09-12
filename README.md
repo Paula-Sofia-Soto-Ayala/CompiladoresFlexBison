@@ -24,6 +24,10 @@ Este proyecto es un sistema de gestión de inventario que permite agregar, elimi
   - Ejemplo: `remove apples;`
 - `update <nombre> = <cantidad>;`
   - Ejemplo: `update apples = 15;`
+- `update <nombre> description <nueva descripción>;`
+  - Ejemplo: `update laptops description electronics;`
+- `update <nombre> category <nueva categoría>;`
+  - Ejemplo: `update apples description food;`
 - `show;`
   - Muestra todos los ítems en el inventario.
 - `save <archivo>;`
@@ -36,21 +40,44 @@ Este proyecto es un sistema de gestión de inventario que permite agregar, elimi
   - Ejemplo: `search description fruit;`
 - `show history;`
   - Muestra el historial de cambios realizados en el inventario.
+- `show;`
+  - Muestra todos los ítems en el inventario.
+- `save <archivo>;`
+  - Ejemplo: `save inventory.txt;`
+- `load <archivo>;`
+  - Ejemplo: `load inventory.txt;`
+- `search category <categoría>;`
+  - Ejemplo: `search category tech;`
+- `search description <descripción>;`
+  - Ejemplo: `search description fruit;`
+- `show history;`
+  - Muestra el historial de cambios realizados en el inventario.
+- `sort by name;`
+  - Ordena el inventario por nombre.
+- `help;`
+  - Muestra una lista de todos los comandos disponibles.
 
 #### Ejemplo de archivo `data.txt`
 
 `txt
-add apples = 10 description fruit category food;
-add laptop = 5 description electronics category tech;
+help;
+add ham = 20 description meat category food;
+add apples = 10 description fruit category tech;
+add laptop = 5 description fruit category tech;
 add milk = 20 description dairy category food;
 show;
 update apples = 15;
-remove milk;
+update laptop description electronics;
+update apples category food;
 search category tech;
-search category fruit;
+search category food;
+search description fruit;
 save inventory.txt;
 load inventory.txt;
-show history;`
+show history;
+sort by name;
+show;
+`
 
 #### Estructura del Código
 
@@ -61,7 +88,9 @@ show history;`
 ## Funciones Principales
 **addItem**: Añade un ítem al inventario.
 **removeItem**: Elimina un ítem del inventario.
-**updateItem**: Actualiza la cantidad de un ítem en el inventario.
+**updateItemQuantity**: Actualiza la cantidad de un ítem en el inventario.
+**updateItemDescription**: Actualiza la descripción de un ítem en el inventario.
+**updateItemCategory**: Actualiza la categoría de un ítem en el inventario.
 **showInventory**: Muestra todos los ítems en el inventario.
 **saveInventory**: Guarda el inventario en un archivo.
 **loadInventory**: Carga el inventario desde un archivo.
@@ -69,6 +98,8 @@ show history;`
 **searchByDescription**: Busca ítems por descripción.
 **showHistory**: Muestra el historial de cambios.
 **getCurrentTime**: Obtiene la hora actual para registrar los cambios.
+**sortInventoryByName**: Ordena el inventario por nombre.
+**showHelp**: Muestra una lista de todos los comandos disponibles.
 
 ###### Ejecución
 

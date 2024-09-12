@@ -34,7 +34,9 @@ int changeCount = 0;
 
 void addItem(char *name, int quantity, char *description, char *category);
 void removeItem(char *name);
-void updateItem(char *name, int quantity);
+void updateItemQuantity(char *name, int quantity);
+void updateItemDescription(char *name, char *newDescription);
+void updateItemCategory(char *name, char *newCategory);
 void showInventory(void);
 void saveInventory(char *filename);
 void loadInventory(char *filename);
@@ -43,6 +45,9 @@ void showHistory(void);
 char* getCurrentTime(void);
 void clearInventory(void);
 void searchByDescription(char *description);
+void searchByName(char *name);
+void sortInventoryByName();
+void showHelp();
 
 %}
 
@@ -53,7 +58,7 @@ void searchByDescription(char *description);
 
 %token <num> NUMBER
 %token <str> IDENTIFIER
-%token ASSIGN SEMICOLON ADD REMOVE UPDATE SHOW HISTORY DESCRIPTION SAVE LOAD CATEGORY SEARCH
+%token ASSIGN SEMICOLON ADD REMOVE UPDATE SHOW HISTORY DESCRIPTION SAVE LOAD CATEGORY SEARCH SORT BY NAME HELP
 
 %%
 program:
@@ -72,7 +77,15 @@ statement:
     }
     | UPDATE IDENTIFIER ASSIGN NUMBER SEMICOLON { 
         printf("Executing updateItem\n");
-        updateItem($2, $4); 
+        updateItemQuantity($2, $4); 
+    }
+    | UPDATE IDENTIFIER DESCRIPTION IDENTIFIER SEMICOLON { 
+        printf("Executing updateItemDescription\n");
+        updateItemDescription($2, $4); 
+    }
+    | UPDATE IDENTIFIER CATEGORY IDENTIFIER SEMICOLON { 
+        printf("Executing updateItemCategory\n");
+        updateItemCategory($2, $4); 
     }
     | SHOW SEMICOLON { 
         printf("Executing showInventory\n");
@@ -94,9 +107,21 @@ statement:
         printf("Executing searchByDescription\n");
         searchByDescription($3); 
     }
+    | SEARCH IDENTIFIER IDENTIFIER SEMICOLON { 
+        printf("Executing searchByDescription\n");
+        searchByName($3); 
+    }
     | SHOW HISTORY SEMICOLON { 
         printf("Executing showHistory\n");
         showHistory(); 
+    }
+    | SORT BY NAME SEMICOLON { 
+        printf("Executing showHistory sorted\n");
+        sortInventoryByName(); 
+    }
+    | HELP SEMICOLON { 
+        printf("Executing showHelp\n");
+        showHelp(); 
     }
 
     ;
@@ -121,7 +146,6 @@ void addItem(char *name, int quantity, char *description, char *category) {
     inventory[itemCount].category = strdup(category);  
     itemCount++;
 
-    // Registrar el cambio
     history[changeCount].action = strdup("ADD");
     history[changeCount].name = strdup(name);
     history[changeCount].quantity = quantity;
@@ -138,7 +162,6 @@ void removeItem(char *name) {
         if (strcmp(inventory[i].name, name) == 0) {
             printf("Removed %s from inventory.\n", name);
 
-            // Registrar el cambio
             history[changeCount].action = strdup("REMOVE");
             history[changeCount].name = strdup(name);
             history[changeCount].quantity = inventory[i].quantity;
@@ -157,13 +180,12 @@ void removeItem(char *name) {
     printf("Item %s not found in inventory.\n", name);
 }
 
-void updateItem(char *name, int quantity) {
+void updateItemQuantity(char *name, int quantity) {
     for (int i = 0; i < itemCount; i++) {
         if (strcmp(inventory[i].name, name) == 0) {
             inventory[i].quantity = quantity;
             printf("Updated %s to %d in inventory.\n", name, quantity);
 
-            // Registrar el cambio
             history[changeCount].action = strdup("UPDATE");
             history[changeCount].name = strdup(name);
             history[changeCount].quantity = quantity;
@@ -177,6 +199,36 @@ void updateItem(char *name, int quantity) {
     }
     printf("Item %s not found in inventory.\n", name);
 }
+
+void updateItemDescription(char *name, char *newDescription) {
+    for (int i = 0; i < itemCount; i++) {
+        if (strcmp(inventory[i].name, name) == 0) {
+            char *currentDescription = strdup(inventory[i].description);
+            free(inventory[i].description);
+            inventory[i].description = strdup(newDescription);
+            printf("Updated description of %s from '%s' to '%s'.\n", name, currentDescription, newDescription);
+            free(currentDescription); 
+            return;
+        }
+    }
+    printf("Item %s not found in inventory.\n", name);
+}
+
+void updateItemCategory(char *name, char *newCategory) {
+    for (int i = 0; i < itemCount; i++) {
+        if (strcmp(inventory[i].name, name) == 0) {
+            char *currentCategory = strdup(inventory[i].category);
+            free(inventory[i].category);
+            inventory[i].category = strdup(newCategory);
+            printf("Updated category of %s from '%s' to '%s'.\n", name, currentCategory, newCategory);
+            free(currentCategory);
+            return;
+        }
+    }
+    printf("Item %s not found in inventory.\n", name);
+}
+
+
 
 void showInventory(void) {
     printf("Inventory:\n");
@@ -247,7 +299,43 @@ void searchByDescription(char *description) {
     }
 }
 
+void searchByName(char *name) {
+    printf("Items with name '%s':\n", name);
+    for (int i = 0; i < itemCount; i++) {
+        if (strcmp(inventory[i].name, name) == 0) {
+            printf("%s: %d (%s) [Category: %s]\n", inventory[i].name, inventory[i].quantity, inventory[i].description, inventory[i].category);
+        }
+    }
+}
 
+void sortInventoryByName() {
+    for (int i = 0; i < itemCount - 1; i++) {
+        for (int j = i + 1; j < itemCount; j++) {
+            if (strcmp(inventory[i].name, inventory[j].name) > 0) {
+                Item temp = inventory[i];
+                inventory[i] = inventory[j];
+                inventory[j] = temp;
+            }
+        }
+    }
+    printf("Inventory sorted by name.\n");
+}
+
+void showHelp(void) {
+    printf("Available commands:\n");
+    printf("add <name> = <quantity> description <description> category <category>;\n");
+    printf("remove <name>;\n");
+    printf("update <name> = <quantity>;\n");
+    printf("update <name> description <description>;\n");
+    printf("show;\n");
+    printf("save <filename>;\n");
+    printf("load <filename>;\n");
+    printf("search category <category>;\n");
+    printf("search description <description>;\n");
+    printf("show history;\n");
+    printf("sort by name;\n");
+    printf("help;\n");
+}
 
 int main(void) {
     return yyparse();

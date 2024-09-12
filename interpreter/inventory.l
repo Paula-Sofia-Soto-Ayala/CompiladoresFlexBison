@@ -6,16 +6,20 @@ extern int yylineno;
 
 %%
 
-"add"           { return ADD; }
-"remove"        { return REMOVE; }
-"show"          { return SHOW; }
-"update"        { return UPDATE; }
-"description"   { return DESCRIPTION; }
+"add"           { printf("Token ADD recognized\n"); return ADD; }
+"remove"        { printf("Token REMOVE recognized\n"); return REMOVE; }
+"show"          { printf("Token SHOW recognized\n"); return SHOW; }
+"update"        { printf("Token UPDATE recognized\n"); return UPDATE; }
+"description"   { printf("Token DESCRIPTION recognized\n"); return DESCRIPTION; }
 "save"          { printf("Token SAVE recognized\n"); return SAVE; }
 "load"          { printf("Token LOAD recognized\n"); return LOAD; }
-"category"      { return CATEGORY; }
-"search"        { return SEARCH; }
-"history"        { return HISTORY; }
+"category"      { printf("Token CATEGORY recognized\n"); return CATEGORY; }
+"search"        { printf("Token SEARCH recognized\n"); return SEARCH; }
+"history"       { printf("Token HISTORY recognized\n"); return HISTORY; }
+"sort"          { printf("Token SORT recognized\n"); return SORT; }
+"by"            { printf("Token BY recognized\n"); return BY; }
+"name"          { printf("Token NAME recognized\n"); return NAME; }
+"help"          { printf("Token HELP recognized\n"); return HELP; }
 "="             { return ASSIGN; }
 ";"             { return SEMICOLON; }
 [0-9]+          { yylval.num = atoi(yytext); return NUMBER; }
