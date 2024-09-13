@@ -1,22 +1,24 @@
-# CompiladoresFlexBison
+### CompiladoresFlexBison
 Interprete con Flex y Bison
 
-# Inventory Management System
+## Inventory Management System
 
 Este proyecto es un sistema de gestión de inventario que permite agregar, eliminar, actualizar y buscar ítems en un inventario. Además, mantiene un historial de cambios para rastrear todas las modificaciones realizadas.
 
-## Funcionalidades
+# Funcionalidades
 
 - **Agregar ítems `add`**: Añade nuevos ítems al inventario.
 - **Eliminar ítems `remove`**: Elimina ítems existentes del inventario.
-- **Actualizar ítems `update`**: Actualiza la cantidad de ítems en el inventario.
+- **Actualizar ítems `update =/category/description`**: Actualiza la cantidad/category/descripción de ítems en el inventario.
 - **Mostrar inventario `show`**: Muestra todos los ítems en el inventario.
 - **Guardar inventario `save`**: Guarda el inventario en un archivo.
 - **Cargar inventario `load`**: Carga el inventario desde un archivo.
-- **Buscar por categoría `search category`**: Busca ítems en el inventario por categoría.
+- **Buscar por categoría `search category/description/name`**: Busca ítems en el inventario por categoría/descripción/nombre.
 - **Mostrar historial `show history`**: Muestra el historial de cambios realizados en el inventario.
+- **Organizar por nombre `sort by name`**: Organizar en orden alfabético por los nombres de los ítems del inventario.
+- **Mostrar ayuda `help`**: Muestra los comandos disponibles.
 
-### Comandos
+# Comandos
 
 - `add <nombre> = <cantidad> description <descripción> category <categoría>;`
   - Ejemplo: `add apples = 10 description fruit category food;`
@@ -38,18 +40,8 @@ Este proyecto es un sistema de gestión de inventario que permite agregar, elimi
   - Ejemplo: `search category tech;`
 - `search description <description>;`
   - Ejemplo: `search description fruit;`
-- `show history;`
-  - Muestra el historial de cambios realizados en el inventario.
-- `show;`
-  - Muestra todos los ítems en el inventario.
-- `save <archivo>;`
-  - Ejemplo: `save inventory.txt;`
-- `load <archivo>;`
-  - Ejemplo: `load inventory.txt;`
 - `search category <categoría>;`
   - Ejemplo: `search category tech;`
-- `search description <descripción>;`
-  - Ejemplo: `search description fruit;`
 - `show history;`
   - Muestra el historial de cambios realizados en el inventario.
 - `sort by name;`
@@ -57,7 +49,7 @@ Este proyecto es un sistema de gestión de inventario que permite agregar, elimi
 - `help;`
   - Muestra una lista de todos los comandos disponibles.
 
-#### Ejemplo de archivo `data.txt`
+# Ejemplo de archivo `data.txt`
 
 `txt
 help;
@@ -79,13 +71,14 @@ sort by name;
 show;
 `
 
-#### Estructura del Código
+## Estructura del Código
 
-## Estructuras de Datos
+# Estructuras de Datos
 **Item**: Representa un ítem en el inventario.
 **Change**: Representa un cambio realizado en el inventario.
 
-## Funciones Principales
+# Funciones Principales
+
 **addItem**: Añade un ítem al inventario.
 **removeItem**: Elimina un ítem del inventario.
 **updateItemQuantity**: Actualiza la cantidad de un ítem en el inventario.
@@ -97,11 +90,11 @@ show;
 **searchByCategory**: Busca ítems por categoría.
 **searchByDescription**: Busca ítems por descripción.
 **showHistory**: Muestra el historial de cambios.
-**getCurrentTime**: Obtiene la hora actual para registrar los cambios.
 **sortInventoryByName**: Ordena el inventario por nombre.
 **showHelp**: Muestra una lista de todos los comandos disponibles.
+**searchByName**: Busca ítems por nombre.
 
-###### Ejecución
+# Ejecución
 
 make clean
 make
