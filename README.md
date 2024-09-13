@@ -96,10 +96,11 @@ show;
 - **searchByName**: Busca ítems por nombre.
 
 ### Ejecución
-
+```txt
 make clean
 make
 ./inventory < data.txt
+```
 
 
 
