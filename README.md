@@ -73,7 +73,8 @@ show;
 
 ## Estructura del Código
 
-# Estructuras de Datos
+### Estructuras de Datos
+
 **Item**: Representa un ítem en el inventario.
 **Change**: Representa un cambio realizado en el inventario.
 
