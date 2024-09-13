@@ -1,11 +1,11 @@
-### CompiladoresFlexBison
+# CompiladoresFlexBison
 Interprete con Flex y Bison
 
 ## Inventory Management System
 
 Este proyecto es un sistema de gestión de inventario que permite agregar, eliminar, actualizar y buscar ítems en un inventario. Además, mantiene un historial de cambios para rastrear todas las modificaciones realizadas.
 
-# Funcionalidades
+### Funcionalidades
 
 - **Agregar ítems `add`**: Añade nuevos ítems al inventario.
 - **Eliminar ítems `remove`**: Elimina ítems existentes del inventario.
@@ -18,7 +18,7 @@ Este proyecto es un sistema de gestión de inventario que permite agregar, elimi
 - **Organizar por nombre `sort by name`**: Organizar en orden alfabético por los nombres de los ítems del inventario.
 - **Mostrar ayuda `help`**: Muestra los comandos disponibles.
 
-# Comandos
+### Comandos
 
 - `add <nombre> = <cantidad> description <descripción> category <categoría>;`
   - Ejemplo: `add apples = 10 description fruit category food;`
@@ -49,7 +49,7 @@ Este proyecto es un sistema de gestión de inventario que permite agregar, elimi
 - `help;`
   - Muestra una lista de todos los comandos disponibles.
 
-# Ejemplo de archivo `data.txt`
+### Ejemplo de archivo `data.txt`
 
 `txt
 help;
@@ -77,7 +77,7 @@ show;
 **Item**: Representa un ítem en el inventario.
 **Change**: Representa un cambio realizado en el inventario.
 
-# Funciones Principales
+### Funciones Principales
 
 **addItem**: Añade un ítem al inventario.
 **removeItem**: Elimina un ítem del inventario.
@@ -94,7 +94,7 @@ show;
 **showHelp**: Muestra una lista de todos los comandos disponibles.
 **searchByName**: Busca ítems por nombre.
 
-# Ejecución
+### Ejecución
 
 make clean
 make
