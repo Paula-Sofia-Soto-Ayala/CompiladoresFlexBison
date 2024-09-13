@@ -80,20 +80,20 @@ show;
 
 ### Funciones Principales
 
-- **addItem**: Añade un ítem al inventario.
-- **removeItem**: Elimina un ítem del inventario.
-- **updateItemQuantity**: Actualiza la cantidad de un ítem en el inventario.
-- **updateItemDescription**: Actualiza la descripción de un ítem en el inventario.
-- **updateItemCategory**: Actualiza la categoría de un ítem en el inventario.
-- **showInventory**: Muestra todos los ítems en el inventario.
-- **saveInventory**: Guarda el inventario en un archivo.
-- **loadInventory**: Carga el inventario desde un archivo.
-- **searchByCategory**: Busca ítems por categoría.
-- **searchByDescription**: Busca ítems por descripción.
-- **showHistory**: Muestra el historial de cambios.
-- **sortInventoryByName**: Ordena el inventario por nombre.
-- **showHelp**: Muestra una lista de todos los comandos disponibles.
-- **searchByName**: Busca ítems por nombre.
+- **addItem()**: Añade un ítem al inventario.
+- **removeItem()**: Elimina un ítem del inventario.
+- **updateItemQuantity()**: Actualiza la cantidad de un ítem en el inventario.
+- **updateItemDescription()**: Actualiza la descripción de un ítem en el inventario.
+- **updateItemCategory()**: Actualiza la categoría de un ítem en el inventario.
+- **showInventory()**: Muestra todos los ítems en el inventario.
+- **saveInventory()**: Guarda el inventario en un archivo.
+- **loadInventory()**: Carga el inventario desde un archivo.
+- **searchByCategory()**: Busca ítems por categoría.
+- **searchByDescription()**: Busca ítems por descripción.
+- **showHistory()**: Muestra el historial de cambios.
+- **sortInventoryByName()**: Ordena el inventario por nombre.
+- **showHelp()**: Muestra una lista de todos los comandos disponibles.
+- **searchByName()**: Busca ítems por nombre.
 
 ### Ejecución
 ```txt
