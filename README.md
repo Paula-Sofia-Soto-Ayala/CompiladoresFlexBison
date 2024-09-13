@@ -51,7 +51,7 @@ Este proyecto es un sistema de gestión de inventario que permite agregar, elimi
 
 ### Ejemplo de archivo `data.txt`
 
-`txt
+```txt
 help;
 add ham = 20 description meat category food;
 add apples = 10 description fruit category tech;
@@ -69,7 +69,7 @@ load inventory.txt;
 show history;
 sort by name;
 show;
-`
+```
 
 ## Estructura del Código
 
