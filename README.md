@@ -99,7 +99,7 @@ show;
 ```txt
 make clean
 make
-./inventory < data.txt
+./interpreter < data.txt
 ```
 
 
