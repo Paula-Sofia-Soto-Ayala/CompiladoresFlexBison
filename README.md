@@ -102,6 +102,26 @@ make
 ./interpreter < data.txt
 ```
 
+### Dockerfile
+- **Construye, correr y ejecutar el contenedor**
+```txt
+docker build --tag tag-contenedor .
+docker run --name nombre-contenedor -it tag-contenedor
+docker exec -it nombre-contenedor /bin/bash
+```
+
+- **Correr y ejecutar contenedor existente**
+```txt
+docker start nombre-contenedor
+docker exec -it nombre-contenedor /bin/bash
+```
+
+- **Contruye y sube una imagen a partir de un Dockerfile a un registro de Docker(DockerHub)**
+```txt
+docker build --tag miusuario/miimagen:latest .
+docker push miusuario/miimagen:latest
+```
+
 
 
 
