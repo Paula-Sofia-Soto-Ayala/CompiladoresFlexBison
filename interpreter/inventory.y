@@ -107,7 +107,7 @@ statement:
         printf("Executing searchByDescription\n");
         searchByDescription($3); 
     }
-    | SEARCH IDENTIFIER IDENTIFIER SEMICOLON { 
+    | SEARCH NAME IDENTIFIER SEMICOLON { 
         printf("Executing searchByDescription\n");
         searchByName($3); 
     }
@@ -332,6 +332,7 @@ void showHelp(void) {
     printf("load <filename>;\n");
     printf("search category <category>;\n");
     printf("search description <description>;\n");
+    printf("search name <name>;\n");
     printf("show history;\n");
     printf("sort by name;\n");
     printf("help;\n");

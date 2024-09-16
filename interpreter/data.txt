@@ -10,6 +10,7 @@ update apples category food;
 search category tech;
 search category food;
 search description fruit;
+search name ham;
 save inventory.txt;
 load inventory.txt;
 show history;

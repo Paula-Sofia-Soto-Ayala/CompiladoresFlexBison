@@ -38,10 +38,10 @@ Este proyecto es un sistema de gestión de inventario que permite agregar, elimi
   - Ejemplo: `load inventory.txt;`
 - `search category <categoría>;`
   - Ejemplo: `search category tech;`
-- `search description <description>;`
+- `search description <descripción>;`
   - Ejemplo: `search description fruit;`
-- `search category <categoría>;`
-  - Ejemplo: `search category tech;`
+- `search name <nombre>;`
+  - Ejemplo: `search name ham;`
 - `show history;`
   - Muestra el historial de cambios realizados en el inventario.
 - `sort by name;`
@@ -64,6 +64,7 @@ update apples category food;
 search category tech;
 search category food;
 search description fruit;
+search name ham;
 save inventory.txt;
 load inventory.txt;
 show history;
