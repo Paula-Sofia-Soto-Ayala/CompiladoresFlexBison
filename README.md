@@ -107,6 +107,8 @@ make
 - **Construye, correr y ejecutar el contenedor**
 ```txt
 docker build --tag tag-contenedor .
+
+# Se corren juntos
 docker run --name nombre-contenedor -it tag-contenedor
 docker exec -it nombre-contenedor /bin/bash
 ```
@@ -121,6 +123,17 @@ docker exec -it nombre-contenedor /bin/bash
 ```txt
 docker build --tag miusuario/miimagen:latest .
 docker push miusuario/miimagen:latest
+```
+
+### Ejecución del programa en la imagen de Docker
+- **Si se quiere ver el ejemplo**
+```txt
+./interpreter < data.txt
+```
+
+- **Si sólo se quiere probar el programa manualmente**
+```txt
+./interpreter
 ```
 
 
